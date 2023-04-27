@@ -11,15 +11,14 @@ export const Info: React.FC = () => {
       <HoverCard>
         <HoverCardTrigger asChild>
           <button>
-            {" "}
             <InfoIcon className="text-zinc-500 hover:text-zinc-400  h-6 w-6" />
           </button>
         </HoverCardTrigger>
-        <HoverCardContent className="w-80 text-zinc-300">
+        <HoverCardContent className="w-80 text-zinc-300 border-zinc-500 border-dashed font-mono">
           <div className="flex justify-between space-x-4">
             <div className="space-y-1">
               <h4 className="text-sm font-medium">
-                Still under construction 🚧
+                Site under construction 🚧
               </h4>
               <p className="text-sm text-zinc-400">
                 This site is an independent fork of{" "}

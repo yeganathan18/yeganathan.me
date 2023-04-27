@@ -58,12 +58,6 @@ export default function Home() {
           at night.
         </h2>
       </div>
-
-      {/* <footer className="absolute bottom-0 flex flex-col items-center justify-center w-screen h-16 animate-fade-in">
-		<p className="text-sm text-zinc-500">
-			An independent fork of <Link target="_blank" className="underline decoration-white" href="https://github.com/chronark.com">chronark.com</Link>
-		</p>
-	  </footer> */}
       <Info />
     </div>
   );

@@ -1,17 +1,17 @@
 import "../global.css";
-import { Inter } from "@next/font/google";
-import LocalFont from "@next/font/local";
+import { Inter } from "next/font/google";
+import LocalFont from "next/font/local";
 import { Metadata } from "next";
 import { Analytics } from "./components/analytics";
 
 export const metadata: Metadata = {
   title: "yeganathan.me",
   description:
-    "Software engineer intern at economize.cloud and founder of gitwonk.com",
+    "Software engineer intern at economize.cloud and Founder of gitwonk.com",
   openGraph: {
-    title: "cyeganathan.me",
+    title: "yeganathan.me",
     description:
-      "Software engineer at economize.cloud and founder of gitwonk.com",
+      "Software engineer at economize.cloud and Founder of gitwonk.com",
     url: "https://yeganathan.me",
     siteName: "yeganathan.me",
     images: [
