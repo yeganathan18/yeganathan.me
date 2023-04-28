@@ -6,33 +6,35 @@ import { Card } from "../components/card";
 import { Article } from "./article";
 import { Redis } from "@upstash/redis";
 import { Eye } from "lucide-react";
-
+import type { Metadata } from "next";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+	title: "Projects",
+	description: "Most of my projects are open source and some are experimental",
+};
+
 export default async function ProjectsPage() {
-	const featured = allProjects.find(
-		(project) => project.slug === "gitwonk",
-	)!;
+	const featured = allProjects.find((project) => project.slug === "gitwonk")!;
 	const top2 = allProjects.find((project) => project.slug === "gitwonk")!;
 	const top3 = allProjects.find((project) => project.slug === "gitwonk")!;
 
 	const sorted = allProjects
-	.filter((p) => p.published)
-	.filter(
-		(project) =>
-			project.slug !== featured.slug &&
-			project.slug !== top2.slug
-	)
-	.sort(
-		(a, b) =>
-			new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() -
-			new Date(a.date ?? Number.POSITIVE_INFINITY).getTime(),
-	);
+		.filter((p) => p.published)
+		.filter(
+			(project) => project.slug !== featured.slug && project.slug !== top2.slug,
+		)
+		.sort(
+			(a, b) =>
+				new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() -
+				new Date(a.date ?? Number.POSITIVE_INFINITY).getTime(),
+		);
 
 	return (
 		<div className="relative pb-16">
 			<Navigation />
-			<div className="px-6 pt-16 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
+			<div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
 				<div className="max-w-2xl mx-auto lg:mx-0">
 					<h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
 						Projects
@@ -60,8 +62,7 @@ export default async function ProjectsPage() {
 										)}
 									</div>
 									<span className="text-zinc-500 text-xs  flex items-center gap-1">
-										<Eye className="w-4 h-4" />{" "}
-										333
+										<Eye className="w-4 h-4" /> 333
 									</span>
 								</div>
 

@@ -14,7 +14,6 @@ type Props = {
 	};
 };
 
-
 export async function generateStaticParams(): Promise<Props["params"][]> {
 	return allProjects
 		.filter((p) => p.published)

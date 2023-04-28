@@ -6,97 +6,140 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
-	path: {
-		type: "string",
-		resolve: (doc) => `/${doc._raw.flattenedPath}`,
-	},
-	slug: {
-		type: "string",
-		resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
-	},
+  path: {
+    type: "string",
+    resolve: (doc) => `/${doc._raw.flattenedPath}`,
+  },
+  slug: {
+    type: "string",
+    resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+  },
+  structuredData: {
+    type: "object",
+    resolve: (doc) => ({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: doc.title,
+      datePublished: doc.publishedAt,
+      dateModified: doc.publishedAt,
+      description: doc.summary,
+      image: doc.image
+        ? `https://yeganathan.me${doc.image}`
+        : `https://yeganathan,me/api/og?title=${doc.title}`,
+      url: `https://yeganathan.me/blog/${doc._raw.flattenedPath}`,
+      author: {
+        "@type": "Person",
+        name: "Lee Robinson",
+      },
+    }),
+  },
 };
 
-export const Project = defineDocumentType(() => ({
-	name: "Project",
-	filePathPattern: "./projects/**/*.mdx",
-	contentType: "mdx",
+export const Blog = defineDocumentType(() => ({
+  name: "Blog",
+  filePathPattern: `blog/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    publishedAt: {
+      type: "string",
+      required: true,
+    },
+    summary: {
+      type: "string",
+      required: true,
+    },
+    image: {
+      type: "string",
+    },
+  },
+  computedFields,
+}));
 
-	fields: {
-		published: {
-			type: "boolean",
-		},
-		title: {
-			type: "string",
-			required: true,
-		},
-		description: {
-			type: "string",
-			required: true,
-		},
-		date: {
-			type: "date",
-		},
-		url: {
-			type: "string",
-		},
-		repository: {
-			type: "string",
-		},
-	},
-	computedFields,
+export const Project = defineDocumentType(() => ({
+  name: "Project",
+  filePathPattern: "projects/**/*.mdx",
+  contentType: "mdx",
+
+  fields: {
+    published: {
+      type: "boolean",
+    },
+    title: {
+      type: "string",
+      required: true,
+    },
+    description: {
+      type: "string",
+      required: true,
+    },
+    date: {
+      type: "date",
+    },
+    url: {
+      type: "string",
+    },
+    repository: {
+      type: "string",
+    },
+  },
+  computedFields,
 }));
 
 export const Page = defineDocumentType(() => ({
-	name: "Page",
-	filePathPattern: "pages/**/*.mdx",
-	contentType: "mdx",
-	fields: {
-		title: {
-			type: "string",
-			required: true,
-		},
-		description: {
-			type: "string",
-		},
-	},
-	computedFields,
+  name: "Page",
+  filePathPattern: "pages/**/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    description: {
+      type: "string",
+    },
+  },
+  computedFields,
 }));
 
 export default makeSource({
-	contentDirPath: "./content",
-	documentTypes: [Page, Project],
-	mdx: {
-		remarkPlugins: [remarkGfm],
-		rehypePlugins: [
-			rehypeSlug,
-			[
-				rehypePrettyCode,
-				{
-					theme: "github-dark",
-					onVisitLine(node) {
-						// Prevent lines from collapsing in `display: grid` mode, and allow empty
-						// lines to be copy/pasted
-						if (node.children.length === 0) {
-							node.children = [{ type: "text", value: " " }];
-						}
-					},
-					onVisitHighlightedLine(node) {
-						node.properties.className.push("line--highlighted");
-					},
-					onVisitHighlightedWord(node) {
-						node.properties.className = ["word--highlighted"];
-					},
-				},
-			],
-			[
-				rehypeAutolinkHeadings,
-				{
-					properties: {
-						className: ["subheading-anchor"],
-						ariaLabel: "Link to section",
-					},
-				},
-			],
-		],
-	},
+  contentDirPath: "./content",
+  documentTypes: [Page, Project],
+  mdx: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypePrettyCode,
+        {
+          theme: "github-dark",
+          onVisitLine(node) {
+            // Prevent lines from collapsing in `display: grid` mode, and allow empty
+            // lines to be copy/pasted
+            if (node.children.length === 0) {
+              node.children = [{ type: "text", value: " " }];
+            }
+          },
+          onVisitHighlightedLine(node) {
+            node.properties.className.push("line--highlighted");
+          },
+          onVisitHighlightedWord(node) {
+            node.properties.className = ["word--highlighted"];
+          },
+        },
+      ],
+      [
+        rehypeAutolinkHeadings,
+        {
+          properties: {
+            className: ["subheading-anchor"],
+            ariaLabel: "Link to section",
+          },
+        },
+      ],
+    ],
+  },
 });
