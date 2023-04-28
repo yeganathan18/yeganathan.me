@@ -29,7 +29,7 @@ const computedFields = {
       url: `https://yeganathan.me/blog/${doc._raw.flattenedPath}`,
       author: {
         "@type": "Person",
-        name: "Lee Robinson",
+        name: "Yeganathan S",
       },
     }),
   },
@@ -107,7 +107,7 @@ export const Page = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Page, Project],
+  documentTypes: [Page, Project, Blog],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

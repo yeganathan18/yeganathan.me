@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: "Yeganathan S",
 		description:
-			"Software engineer at economize.cloud and Founder of gitwonk.com",
+			"Software engineer intern at economize.cloud and Founder of gitwonk.com",
 		url: "https://yeganathan.me",
 		siteName: "yeganathan.me",
 		images: [
