@@ -1,17 +1,15 @@
 import { ImageResponse } from '@vercel/og';
-import { NextRequest } from 'next/server';
 
-export const config = {
-  runtime: 'edge',
-};
+export const runtime = "edge"
 
 const font = fetch(
-  new URL('/public/fonts/CalSans-SemiBold.ttf', import.meta.url)
+  new URL('../../../public/fonts/CalSans-SemiBold.ttf', import.meta.url)
 ).then((res) => res.arrayBuffer());
 
-export default async function handler(req: NextRequest) {
-  const { searchParams } = req.nextUrl;
-  const postTitle = searchParams.get('title');
+export async function GET(req: Request) {
+  const url = new URL(req.url)
+  const searchParams = Object.fromEntries(url.searchParams)
+  const postTitle = searchParams.title
   const fontData = await font;
 
   return new ImageResponse(
