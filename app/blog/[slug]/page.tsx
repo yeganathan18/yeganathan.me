@@ -1,8 +1,8 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { Mdx } from '../../components/mdx';
-import { allBlogs } from 'contentlayer/generated';
-import Balancer from 'react-wrap-balancer';
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Mdx } from "../../components/mdx";
+import { allBlogs } from "contentlayer/generated";
+import Balancer from "react-wrap-balancer";
 
 export async function generateStaticParams() {
   return allBlogs.map((post) => ({
@@ -10,9 +10,15 @@ export async function generateStaticParams() {
   }));
 }
 
+interface BlogPageProps {
+  params: {
+    slug: string;
+  };
+}
+
 export async function generateMetadata({
   params,
-}): Promise<Metadata | undefined> {
+}: BlogPageProps): Promise<Metadata | undefined> {
   const post = allBlogs.find((post) => post.slug === params.slug);
   if (!post) {
     return;
@@ -35,7 +41,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      type: 'article',
+      type: "article",
       publishedTime,
       url: `https://yeganathan.me/blog/${slug}`,
       images: [
@@ -45,7 +51,7 @@ export async function generateMetadata({
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title,
       description,
       images: [ogImage],
@@ -53,13 +59,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function Blog({ params }) {
+export default async function Blog({ params }: BlogPageProps) {
   const post = allBlogs.find((post) => post.slug === params.slug);
 
   if (!post) {
     notFound();
   }
-
 
   return (
     <section className="max-w-2xl mx-auto mt-10">
