@@ -15,7 +15,7 @@ export const Info = ({ title, children }: InfoProps) => {
       <HoverCard>
         <HoverCardTrigger asChild>
           <button>
-            <InfoIcon className="text-zinc-500 hover:text-zinc-400  h-6 w-6" />
+            <InfoIcon className="text-zinc-500 hover:text-emerald-400  h-6 w-6" />
           </button>
         </HoverCardTrigger>
         <HoverCardContent className="w-80 text-zinc-300 border-zinc-500 border-dashed font-mono">
