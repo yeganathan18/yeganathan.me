@@ -2,13 +2,10 @@ import "../global.css";
 import { Inter } from "next/font/google";
 import LocalFont from "next/font/local";
 import { Metadata } from "next";
-import { Analytics } from "./components/analytics";
+import { Analytics } from "../components/analytics";
 
 export const metadata: Metadata = {
-	title: {
-		default: "Yeganathan S",
-		template: "%s | Yeganathan",
-	},
+	title: "Yeganathan S",
 	description:
 		"Software engineer intern at economize.cloud and Founder of gitwonk.com",
 	openGraph: {
