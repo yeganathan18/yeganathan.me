@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 const NavLinks = [
 	{
-		href: "/blog",
+		href: "/posts",
 		text: "Blog",
 	},
 	{
