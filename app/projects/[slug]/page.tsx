@@ -1,10 +1,8 @@
 import { notFound } from "next/navigation";
 import { allProjects } from "contentlayer/generated";
-import { Mdx } from "@/app/components/mdx";
-import { Header } from "./header";
-import "./mdx.css";
-import { ReportView } from "./view";
-import { Redis } from "@upstash/redis";
+import { Mdx } from "@/components/mdx";
+import { Header } from "@/components/header";
+import "@/public/css/mdx.css"
 
 export const revalidate = 60;
 
@@ -32,9 +30,7 @@ export default async function PostPage({ params }: Props) {
 
 	return (
 		<div className="bg-zinc-50 min-h-screen">
-			<Header project={project} views={0} />
-			<ReportView slug={project.slug} />
-
+			<Header project={project} />
 			<article className="px-4 py-12 mx-auto prose prose-zinc prose-quoteless">
 				<Mdx code={project.body.code} />
 			</article>

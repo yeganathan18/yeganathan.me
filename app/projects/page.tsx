@@ -1,8 +1,8 @@
 import Link from "next/link";
 import React from "react";
 import { allProjects } from "contentlayer/generated";
-import { Navigation } from "../components/nav";
-import { Card } from "../components/card";
+import { Navigation } from "../../components/nav";
+import { Card } from "../../components/card";
 import { Article } from "./article";
 import { Redis } from "@upstash/redis";
 import { Eye } from "lucide-react";
@@ -40,7 +40,7 @@ export default async function ProjectsPage() {
 						Projects
 					</h2>
 					<p className="mt-4 text-zinc-400">
-						Most of my projects are open source and some are experimental.
+						Most of my projects are open source and I've spent a large part of my time on.
 					</p>
 				</div>
 				<div className="w-full h-px bg-zinc-800" />
@@ -58,12 +58,9 @@ export default async function ProjectsPage() {
 												}).format(new Date(featured.date))}
 											</time>
 										) : (
-											<span>SOON</span>
+											<span className="bg-zinc-800 text-zinc-300 rounded-md px-2 py-1 tracking-tighter">SOON</span>
 										)}
 									</div>
-									<span className="text-zinc-500 text-xs  flex items-center gap-1">
-										<Eye className="w-4 h-4" /> 333
-									</span>
 								</div>
 
 								<h2
