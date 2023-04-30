@@ -50,7 +50,7 @@ export const BlogPageHeader: React.FC<Props> = ({ post, views }) => {
                   : "text-zinc-600 hover:text-zinc-900"
               } `}
             >
-              <Eye className="w-5 h-5" />{" "}
+              <Eye className="w-6 h-6" />{" "}
               {Intl.NumberFormat("en-US", { notation: "compact" }).format(
                 views
               )}
@@ -76,7 +76,7 @@ export const BlogPageHeader: React.FC<Props> = ({ post, views }) => {
           </div>
 
           <Link
-            href="/projects"
+            href="/posts"
             className={`duration-200 hover:font-medium ${
               isIntersecting
                 ? " text-zinc-400 hover:text-zinc-100"

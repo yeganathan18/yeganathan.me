@@ -5,10 +5,7 @@ import { Metadata } from "next";
 import { Analytics } from "./components/analytics";
 
 export const metadata: Metadata = {
-	title: {
-		default: "Yeganathan S",
-		template: "%s | Yeganathan",
-	},
+	title: "Yeganathan S",
 	description:
 		"Software engineer intern at economize.cloud and Founder of gitwonk.com",
 	openGraph: {
@@ -39,8 +36,11 @@ export const metadata: Metadata = {
 		},
 	},
 	twitter: {
-		title: "Yeganathan",
 		card: "summary_large_image",
+		title: "Yeganathan S",
+		description: "Software engineer intern at economize.cloud and Founder of gitwonk.com",
+		images: ['https://yeganathan.me/og.png'],
+		creator: "@yeganathans",
 	},
 };
 const inter = Inter({

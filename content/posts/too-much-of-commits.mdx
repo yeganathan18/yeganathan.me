@@ -1,0 +1,196 @@
+---
+title: 'Too Much of Unnecessary Commits'
+publishedAt: '2020-12-4'
+summary: 'I just found a way to reduce the number of commits in git.'
+---
+
+Hello Everyone! back with another topic, Have ever felt that your repository in Github has a lot of commits history in which few don't make sense? for example, fixing typos in the readme in my case. If you're a Beginner then you may think of creating a new repo and push all those pretty useless commits in a single commit message "First commit". Well, then you're in the right place. Actually, there is a way you can squash multiple commits into a single one.
+
+**Basically, We squash commits to make our git log more concise.**
+
+### Prerequisites:
+* Git should be installed.
+* Knowledge of Terminal and Git commands.
+
+⚠️ Disclaimer ⚠️
+Before experimenting with these, always have a backup of your files!
+
+All being set let's dive into our topic! For easy understanding, I broke this into pieces and tried explaining in a noob way.
+
+### Getting Started 🥳
+
+This is the commits history of my example repo.
+
+<Image 
+  src="https://dev-to-uploads.s3.amazonaws.com/i/bxy3wt25t2c8ctc2gohj.png"   
+  width="718"
+  height="404"
+  alt="Image" />
+
+So in the above example, I don't want the 5 commits history which is in-between the last and first since it doesn't make sense. let's make those commits history into a single commit!
+
+Shoot up the terminal and go to your repo folder directory
+
+```sh
+$ cd <repo-folder>
+```
+
+Make sure your repo folder is updated with all those commits you made and Write the following command...
+
+```sh
+$ git rebase -i HEAD~<n>
+```
+
+> In this case we are gonna give n as 6, where n is the number of commits history we need and these commits are from top-bottom. if we give n including the first commit we made, probably it shoots an error.
+
+### Experimenting 🧪
+Executing the previous step will bring up the below interface with commit history and options to perform the following:
+
+```sh
+pick d8c1963 Adding contents
+pick 5e4ea01 added
+pick a3e1b06 removed few content
+pick f9d4b67 Added few contents
+pick 9e69811 Fixed typos and added content
+pick 42dbace final
+
+# Rebase 5f5302b..42dbace onto f9d4b67 (6 commands)
+#
+# Commands:
+# p, pick <commit> = use commit
+# r, reword <commit> = use commit, but edit the commit message
+# e, edit <commit> = use commit, but stop for amending
+# s, squash <commit> = use commit, but meld into previous commit
+# f, fixup <commit> = like "squash", but discard this commit's log message
+# x, exec <command> = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with 'git rebase --continue')
+# d, drop <commit> = remove commit
+# l, label <label> = label current HEAD with a name
+# t, reset <label> = reset HEAD to a label
+# m, merge [-C <commit> | -c <commit>] <label> [# <oneline>]
+# .       create a merge commit using the original merge commit's
+# .       message (or the oneline, if no original merge commit was
+# .       specified). Use -c <commit> to reword the commit message.
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+```
+
+
+### Squashing Begins❗️
+Now, press <kbd>S</kbd> and it goes into editing mode. Replace **pick** as **squash**, for the commits you need to squash.
+```sh
+pick d8c1963 Adding contents
+squash 5e4ea01 added
+squash a3e1b06 removed few content
+squash f9d4b67 Added few contents
+squash 9e69811 Fixed typos and added content
+pick 42dbace final
+
+# Rebase 5f5302b..42dbace onto f9d4b67 (6 commands)
+#
+# Commands:
+# p, pick <commit> = use commit
+# r, reword <commit> = use commit, but edit the commit message
+# e, edit <commit> = use commit, but stop for amending
+# s, squash <commit> = use commit, but meld into previous commit
+# f, fixup <commit> = like "squash", but discard this commit's log message
+# x, exec <command> = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with 'git rebase --continue')
+# d, drop <commit> = remove commit
+# l, label <label> = label current HEAD with a name
+# t, reset <label> = reset HEAD to a label
+# m, merge [-C <commit> | -c <commit>] <label> [# <oneline>]
+# .       create a merge commit using the original merge commit's
+# .       message (or the oneline, if no original merge commit was
+# .       specified). Use -c <commit> to reword the commit message.
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+-- INSERT --
+```
+
+> basically, all these 4 commits history is gonna be squashed into the previous one with a commit message which we are going to give in the next step. Always don't include **squash** in the first commit(Well! in this case, "d8c1963"), probably it shoots an error.
+
+Now save the changes made by pressing <kbd>Esc</kbd> + <kbd>:</kbd> + <kbd>w</kbd> + <kbd>q</kbd> and after saving press <kbd>shift</kbd> + <kbd>z</kbd> two times, which brings you to an interface like this... 
+
+```sh
+# This is a combination of 5 commits.
+# This is the 1st commit message:
+
+Adding contents
+# This is the commit message #2:
+
+added
+# This is the commit message #3:
+
+removed few content
+# This is the commit message #4:
+
+Added few contents
+# This is the commit message #5:
+
+Fixed typos and added content
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Fri Dec 4 12:14:48 2020 +0530
+#
+# interactive rebase in progress; onto 5f5302b
+"~/Dev-test-repo/.git/COMMIT_EDITMSG" 33L, 839C
+```
+
+> here what it does is 
+
+### Processing 🔄
+
+Now it's our chance to delete the commit messages and create a new commit message
+
+```sh
+final test
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Fri Dec 4 12:14:48 2020 +0530
+#
+# interactive rebase in progress; onto 5f5302b
+# Last commands done (5 commands done):
+#    squash f9d4b67 Added few contents
+#    squash 9e69811 Fixed typos and added content
+# Next command to do (1 remaining command):
+#    pick 42dbace final
+# You are currently rebasing branch 'main' on '5f5302b'.
+#
+# Changes to be committed:
+#       modified:   README.md
+```
+Again, press <kbd>Esc</kbd> + <kbd>:</kbd> + <kbd>w</kbd> + <kbd>q</kbd> and after saving press <kbd>shift</kbd> + <kbd>z</kbd> two times. Now you will be thrown out that environment.
+
+### Takeoff ✈️
+All these efforts should be reflected in our repo right!? So, let's push all those to our example repo in Github...
+```sh
+$ git push -f
+```
+
+> here, we use **-f** since we're force pushing it.
+
+### Finally 🎉
+
+We squashed multiple commits to a single one!
+
+<Image src="https://dev-to-uploads.s3.amazonaws.com/i/sa45089l0tuufo26hcm3.png" width="500" height="300" />
+
+
+For Beginners, remember deleting a commit is different from squashing commits.
+
+Hope this article helps you!, Do like and share it if you find it useful. Post your valuable suggestions in the comments below!
+

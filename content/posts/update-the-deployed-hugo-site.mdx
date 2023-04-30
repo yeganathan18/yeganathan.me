@@ -1,0 +1,70 @@
+---
+title: 'Good Time To Update Our Hugo Site'
+publishedAt: '2021-03-09'
+summary: 'I could not find any good reference for updating hugo site, so I decided to write one.'
+---
+
+Hi there!
+In the previous article, we were discussing how to create a portfolio with Hugo and deploying the same in Github pages. if you didn't check out yet, then do check out [here](https://dev.to/yeganathan18/create-and-deploy-your-hugo-site-52ek) and give it a read 😃
+
+This blog is a continuation of the same and in this, I'm going to share how to update hugo site which has already been deployed.
+
+For instance, let's say I need to add my previous article to the blog section of my portfolio and update the same in the deployed site.
+
+Since we created 2 separate repos for our hugo site, we need to push commits of both the repositories ( `hugo_site` and `username.github.io` )
+
+In order to start, we need to open our `hugo_site` directory in the terminal.
+
+First, make sure all the commits in local and remote are the same. so let's pull those if there are any changes in the remote.
+```sh
+$ git fetch origin 
+$ git rebase origin master
+```
+Now as usual open the files in the editor and shoot up the terminal and write the following commands in order to start our local server.
+
+```sh
+$ hugo server -D
+```
+Do the updates/changes and make sure everything is perfect.
+
+Stop the server now and type the following commands in the terminal...
+```sh
+$ hugo
+```
+> This is to regenerate HTML files in our `username.github.io` submodule
+
+After generating the HTML files, go to the `username.github.io` directory and push all the commits to the same.
+
+```sh
+$ cd <username.github.io>
+$ git add .
+$ git commit -m "committing the regenerated html files"
+$ git push origin main
+```
+> the last command triggers Github to rebuild our page with the changes we've made.
+
+Now again come back to the parent/previous directory and push all those commits to our `hugo_site` repository.
+
+```sh
+$ cd ..
+$ git add .
+$ git commit -m "committing the hugo changes and updated submodule"
+$ git push origin master
+```
+
+⚠️ Note ⚠️
+Make sure that you push files to the respective repos and branches.
+```sh
+error: src refspec master does not match any
+```
+> If you face any similar error like this then probably you should check the branching you're pushing.
+
+#### Pro-Tips for faster page loads 🔫
+
+1. Check [PageSpeed](https://developers.google.com/speed/pagespeed/insights/) always after deployment. 
+2. Avoid using 4k resolution images or videos on your site. 
+3. Try using Webp format for images rather than jpeg and png.
+
+Hope this article helps you!
+
+Happy coding 👨🏻‍💻

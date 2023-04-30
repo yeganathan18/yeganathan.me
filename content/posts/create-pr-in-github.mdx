@@ -1,0 +1,268 @@
+---
+title: 'How to Open a Pull Request in Github?'
+publishedAt: '2020-10-25'
+summary: 'Open your first pull request in just 13 steps and grab your Hacktoberfest T-shirt.'
+---
+
+Hello Everyone!
+
+I'm going to share my experience on creating a pull request in Github, Trust me that's easier than what we think.
+
+Let's get started,
+
+### Prerequisites:
+
+- Git should be installed.
+- Basic knowledge of Git.
+- Github account.
+- Knowledge of terminal commands.
+
+In this article, we are going to add badge to the README.md file by pulling a request.
+
+Badges basically help in increasing the readability of the readme file. just like tags!
+
+<Image
+  src="https://dev-to-uploads.s3.amazonaws.com/i/zi9f67j6r3twjn2sbqpr.png"
+  width="718"
+  height="404"
+  alt="Image"
+/>
+
+Now the real part of git begins!😂 and let me break it down into steps...
+
+#### Step - 1
+
+Fork the repository you need to pull a request. when we fork, we get a copy of that project in our Github profile.
+
+#### Step - 2
+
+Copy the Fork URL.
+
+<Image
+  src="https://dev-to-uploads.s3.amazonaws.com/i/1yfkxnas6ibck5xta2r5.png"
+  width="718"
+  height="404"
+  alt="Image"
+/>
+
+Open up a terminal type the following command.
+
+```sh
+$ git clone your-fork-url
+```
+
+Now we have the project locally,
+
+<Image
+  src="https://dev-to-uploads.s3.amazonaws.com/i/z3le2uq4euavm9d9qg6a.png"
+  width="718"
+  height="404"
+  alt="Image"
+/>
+
+#### Step - 3
+
+Go to the project directory now!
+
+```sh
+$ cd project-name
+```
+
+<Image
+  src="https://dev-to-uploads.s3.amazonaws.com/i/8p6djss2o9irz3hhuthb.png"
+  width="718"
+  height="404"
+  alt="Image"
+/>
+
+#### Step - 4
+
+Now check the issue of the repository which you forked, you will find something like this...
+
+<Image
+  src="https://dev-to-uploads.s3.amazonaws.com/i/jqozr46p19qpk30ui204.png"
+  width="718"
+  height="404"
+  alt="Image"
+/>
+
+#### Step - 5
+Open the README.md file using an editor and add the badges that are mentioned in the issue.
+
+you can find the Markdown codes for badges <a href="https://github.com/Naereen/badges.git" target="_blank">here.</a>
+
+<Image
+  src="https://dev-to-uploads.s3.amazonaws.com/i/orlgdruqjd0q814kdw1a.png"
+  width="718"
+  height="404"
+  alt="Image"
+/>
+
+Save the README.md after editing.
+
+#### Step - 6
+
+Type the following command...
+
+```sh
+$ git status
+```
+
+Now you can see there will be something like modified README.md in red color.
+
+We have a change in README.md file right!? so we need to save that change. In other words, we need to commit those changes that are made.
+
+#### Step - 7
+
+Open up and type the following...
+
+```sh
+$ git diff
+```
+
+This command shows the changes made by us!
+
+Don't ask me why are we checking it again since we know what are all changes we made! as said before I'm taking you guys through a path...
+
+Just relax and continue reading!
+
+#### Step - 8
+
+Most forgets the usage of all these commands including myself 🤦🏻‍♂️
+let me explain this too,
+
+```sh
+$ git add README.md
+```
+
+> This adds README.md file including your project.
+
+```sh
+$ git add file1 file2 file3
+```
+
+> When you are having many files.
+
+```sh
+$ git add .
+```
+
+> When you want to add all files.
+
+The last command mentioned above is not a good practice though! what if you don't want a file after pushing it. Believe me, it really sucks! myself when I was new to git I use to delete the whole repository for this problem🙆🏻‍♂️😬
+
+Back to the path!
+
+We are going to use the first command mentioned in **Step - 8**.
+
+#### Step - 9
+
+Now again...
+
+```sh
+$ git status
+```
+
+> This time you get modified: README.md but in green color! since we added the files, it changes from red to green.
+
+The whole process is like packing chocolates for gift in the factory!
+
+Eww! that sounds a little weird I know but trust me! with a real-life example, you will understand it better than anything else.
+
+#### Step - 10
+
+Now type the following command in the terminal...
+
+```sh
+$ git commit -m "Add the License badge to README.md"
+```
+
+> Remember committing is like packing
+
+When you pack, you add a note too! like bday wishes and this part should be sensible too right!? we don't write happy bday for an anniversary function, similarly, commit messages should be sensible.
+
+#### Step - 11
+
+Now again...
+
+```sh
+$ git status
+```
+
+> you will be probably getting the working tree clean & nothing to commit.
+
+This happens because we had change earlier but we committed it which means we saved a checkpoint for it.
+
+Type...
+
+```sh
+$ git log
+```
+
+<Image
+  src="https://dev-to-uploads.s3.amazonaws.com/i/eg0vglamdj18hfans7hp.png"
+  width="718"
+  height="404"
+  alt="Image"
+/>
+
+We can see our commit in the log!
+
+#### Step - 12
+Now we have to send the chocolate(we can eat it too!), for sending we need an address. Our code should finally go to the repository which we forked in the beginning but do we have access to that? No right!? so for sending it we need a delivery service. Let's say for example you forked a project from user "A" and now the forked one which has some changes is with you so in this instance you are "B". Now "A" is Europe and "B" is India so for sending the chocolates from India to Europe we need a delivery service which is our **_Pull Request_**.
+
+Now type this command...
+
+```sh
+$ git remote -v
+```
+
+Basically, this shows fetch and push, try to remember like this...
+
+> fetch - from where you want to fetch the commits
+> push - where do you want to push the commits
+
+#### Step - 13
+We didn't push the commit yet right!? so let's push it...
+
+```sh
+$ git push -u origin master
+```
+
+Now our file gets pushed into our Repo.
+
+> Basically push command pushes all the new commits to the Github repository.
+
+Let me conclude,
+
+snitch3s/hackbunch was the main project here and ours is a fork so initially, both are at the same level but you made a new commit recently so you are 1 commit ahead of the main project.
+
+> Remember: Only when there is a change (ahead/behind) you can make a Pull Request(PR)
+
+so your PR should go from your fork:master branch to snitches:master
+
+Now you can find something like compare or pull request basically both do the same...
+
+<Image
+  src="https://dev-to-uploads.s3.amazonaws.com/i/hv86ob964337yq29z2j4.png"
+  width="718"
+  height="404"
+  alt="Image"
+/>
+
+Pull a request and create one
+
+<Image
+  src="https://dev-to-uploads.s3.amazonaws.com/i/zh0knatv4cq6999a9865.png"
+  width="718"
+  height="404"
+  alt="Image"
+/>
+
+The above image shows something similar to git diff command which is nothing but one final check!
+
+Now it totally depends on the maintainer whether to accept the PR or not!
+
+Kudos to my mentor who taught all these stuffs @vchrombie
+
+Thanks for reading my article and Comment down your feedback!😃

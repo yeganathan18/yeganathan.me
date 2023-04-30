@@ -3,11 +3,12 @@ import { notFound } from "next/navigation";
 import { Mdx } from "../../components/mdx";
 import { allPosts } from "contentlayer/generated";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Github, Twitter } from "lucide-react";
 import { Redis } from "@upstash/redis";
 import { ReportView } from "./view";
 import "./mdx.css";
 import { BlogPageHeader } from "./header";
+import Balancer from "react-wrap-balancer";
 
 export const revalidate = 60;
 const redis = Redis.fromEnv();
@@ -89,7 +90,7 @@ export default async function Blog({ params }: PostPageProps) {
           </script>
           <Mdx code={post.body.code} />
           <hr className="mt-12 border-zinc-500" />
-          <div className="flex justify-center py-6">
+          <div className="flex justify-center pb-6">
             <Link
               href="/posts"
               className="duration-200 text-zinc-600 hover:text-zinc-900 flex items-center gap-1"
@@ -99,6 +100,24 @@ export default async function Blog({ params }: PostPageProps) {
             </Link>
           </div>
         </article>
+      </div>
+      <div className="py-12 bg-gradient-to-tl from-black via-zinc-900 to-black md:py-32">
+        <div className="mx-auto flex max-w-screen-xl flex-col items-center gap-y-8 px-4 text-center sm:px-6 lg:px-8">
+          <h1 className="font-display max-w-3xl text-2xl text-zinc-100 sm:text-4xl">
+            <Balancer>Do you spot any errors in this post?</Balancer>
+          </h1>
+          <p className="max-w-lg text-base text-zinc-500">
+            Don't hesitate to submit a pull request on{" "}
+            <Link target="_blank" href="https://github.com/yeganathan18/yeganathan.me" className="underline text-zinc-400 hover:text-zinc-300 hover:decoration-emerald-400">
+              GitHub
+            </Link>
+            , or drop me a message on {" "}
+            <Link target="_blank" href="https://twitter/yeganathans" className="underline text-zinc-400 hover:text-zinc-300 hover:decoration-emerald-400">
+              Twitter
+            </Link>
+            .
+          </p>
+        </div>
       </div>
     </div>
   );
