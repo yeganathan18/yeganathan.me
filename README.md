@@ -25,6 +25,7 @@ Luckily it was an open source project, so I created an independent fork of it to
 - [x] Depreciated project view counter but reintroduced it for the blog post with same Upstash implementation.
 - [x] Minor UI changes that includes hovering effects, colors, tiny ui components, etc.
 - [x] Bumped up few `packages@latest`
+- [ ] Site wide mobile responsiveness (few parts needs to be optimized for mobile screens)
 - [ ] Consolidate duplicated code and modularize for better organization and maintainability
 - [ ] Fix the hydration errors
 - [ ] Clean the code and unneccesary files
