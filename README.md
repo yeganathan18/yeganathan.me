@@ -13,7 +13,9 @@
 
 I have built 2-3 portfolio websites in the past with plan of writing personal blogs regularly, but I failed 😿
 
-This time, coming back powerful than before 😎 and while in search of a good minimalistic design for my personal blog I found [Andreas's website](https://twitter/chronark_). Luckily it was an open source project, so I created an independent fork of [chronark/chronark.com](https://github.com/chronark) to adopt my own tastes.
+This time, coming back powerful than before 😎 and while in search of a good minimalistic design for my personal blog I found [chronark/chronark.com](https://github.com/chronark)
+
+Luckily it was an open source project, so I created an independent fork of it to adopt my own tastes.
 
 ## New Changes
 
