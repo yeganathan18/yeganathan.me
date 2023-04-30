@@ -1,15 +1,41 @@
-<div align="center">
-    <a href="https://yeganathan.me"><h1 align="center">yeganathan.me</h1></a>
+<p align="center">
+<img width="150" src="https://user-images.githubusercontent.com/63534555/235374507-184004d2-c9b2-4ec5-815f-3f05b9189b14.png"/>
+<h1 align="center"><b>yeganathan.me</b></h1>
+<p align="center">
+     Scrapbook of all the cool things I've worked on
+    <br />
+    <a href="https://yeganathan.me"><strong>Check it out now 🍊</strong></a>
+  </p>
+</p>
+
+
+## Long Story Short
+
+I have built 2-3 portfolio websites in the past with plan of writing personal blogs regularly, but I failed 😿
+
+This time, coming back powerful than before 😎 and while in search of a good minimalistic design for my personal blog I found [Andreas's website](https://twitter/chronark_). Luckily it was an open source project, so I created an independent fork of [chronark/chronark.com](https://github.com/chronark) to adopt my own tastes.
+
+## New Changes
+
+- [x] Support for blog posts while maintaining the existing design style.
+- [x] Better SEO with built-in robots.ts and sitemap.ts of Next.js 13
+- [x] OG image generation for blog posts
+- [x] Depreciated project view counter but reintroduced it for the blog post with same Upstash implementation.
+- [x] Minor UI changes that includes hovering effects, colors, tiny ui components, etc.
+- [x] Bumped up few `packages@latest`
+- [ ] Consolidate duplicated code and modularize for better organization and maintainability
+- [ ] Fix the hydration errors
+- [ ] Clean the code and unneccesary files
+
+
+## Built With
     
-My personal website, built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), [Upstash](https://upstash.com?ref=chronark.com), [Contentlayer](https://www.contentlayer.dev/) and deployed to [Vercel](https://vercel.com/).
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Upstash](https://upstash.com?ref=chronark.com)
+- [Contentlayer](https://www.contentlayer.dev/) 
+- and deployed to [Vercel](https://vercel.com/)
 
-Forked from [chronark/chronark.com](https://github.com/chronark/chronark.com.git) but added few design changes of my taste on top of it 😛
-
-</div>
-
-<br/>
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/upstash/clone?demo-title=Next.js%20Portfolio%20with%20Pageview%20Counter&demo-description=Portfolio%20site%20with%20pageview%20counter%2C%20built%20with%20Next.js%2013%20App%20Router%2C%20Contentlayer%2C%20and%20Upstash%20Redis.&demo-url=https%3A%2F%2Fchronark.com%2F&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F1DA8n5a6WaP9p1FXf9LmUY%2Fc6264fa2732355787bf657df92dda8a1%2FCleanShot_2023-04-17_at_14.17.37.png&project-name=Next.js%20Portfolio%20with%20Pageview%20Counter&repository-name=nextjs-portfolio-pageview-counter&repository-url=https%3A%2F%2Fgithub.com%2Fchronark%2Fchronark.com&from=templates&integration-ids=oac_V3R1GIpkoJorr6fqyiwdhl17)
 
 ## Running Locally
 
