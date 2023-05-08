@@ -9,6 +9,8 @@ import { Eye } from "lucide-react";
 
 const redis = Redis.fromEnv();
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Blog",
   description:
