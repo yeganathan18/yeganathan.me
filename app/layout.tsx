@@ -7,11 +7,11 @@ import { Analytics } from "./components/analytics";
 export const metadata: Metadata = {
 	title: "Yeganathan S",
 	description:
-		"Software engineer intern at economize.cloud and Founder of gitwonk.com",
+		"Intern at crowd.dev and Founder of gitwonk.com",
 	openGraph: {
 		title: "Yeganathan S",
 		description:
-			"Software engineer intern at economize.cloud and Founder of gitwonk.com",
+			"Intern at crowd.dev and Founder of gitwonk.com",
 		url: "https://yeganathan.me",
 		siteName: "yeganathan.me",
 		images: [
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 	twitter: {
 		card: "summary_large_image",
 		title: "Yeganathan S",
-		description: "Software engineer intern at economize.cloud and Founder of gitwonk.com",
+		description: "Intern at crowd.dev and Founder of gitwonk.com",
 		images: ['https://yeganathan.me/og.png'],
 		creator: "@yeganathans",
 	},
